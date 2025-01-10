@@ -1,0 +1,36 @@
+// gbuffer_ps30.fxc
+
+#include "common_ps_fxc.h"
+
+struct PS_INPUT {
+    float4 position : POSITION;
+    float3 worldPos : TEXCOORD0;
+    float3 normal   : TEXCOORD1;
+    float2 texcoord : TEXCOORD2;
+};
+
+struct PS_OUTPUT {
+    float4 rt0 : SV_Target0; // Albedo/Color
+    float4 rt1 : SV_Target1; // Normal
+    float4 rt2 : SV_Target2; // Depth
+};
+
+Texture2D albedoTexture : register(t0);
+Texture2D normalTexture : register(t1);
+SamplerState sampler0   : register(s0);
+
+PS_OUTPUT main(PS_INPUT input) {
+    PS_OUTPUT output;
+
+    // Sample albedo
+    output.rt0 = albedoTexture.Sample(sampler0, input.texcoord);
+
+    // Sample normal map and transform to world space
+    float3 normalMap = normalTexture.Sample(sampler0, input.texcoord).xyz * 2.0 - 1.0;
+    output.rt1 = float4(normalize(normalMap), 0.0);
+
+    // Store depth (view-space position.z)
+    output.rt2 = float4(input.worldPos.z, 0.0, 0.0, 1.0);
+
+    return output;
+}
