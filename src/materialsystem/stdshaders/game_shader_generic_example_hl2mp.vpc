@@ -1,0 +1,38 @@
+//-----------------------------------------------------------------------------
+//	game_shader_generic_example_hl2mp.vpc
+//
+//	Project Script for mods to use an an example of how to override shaders
+//-----------------------------------------------------------------------------
+
+$Macro SRCDIR		"..\.."
+$Macro OUTBINNAME "game_shader_generic_example"
+$Macro GAMENAME "mod_hl2mp"
+$Include "$SRCDIR\materialsystem\stdshaders\game_shader_generic_example_base.vpc"
+
+$Project "Game Shaders (HL2MP)"
+{
+$Folder "Shader Source"
+	{
+		$Folder "fxc"
+		{
+			$File	"pbr_ps30.fxc"
+			$File	"pbr_vs30.fxc"
+			$File	"pbr_ps20b.fxc"
+			$File	"pbr_vs20b.fxc"
+			$File 	"lens_flare_ps30.fxc"
+			$File "lens_flare_vs30.fxc"
+		}
+
+		$Folder "Headers"
+		{
+			$File	"pbr_common_ps2_3_x.h"
+		}
+	}
+
+	$Folder "Source Files"
+	{
+		$File	"pbr_dx9.cpp"
+		$File "LensFlare_dx9.cpp"
+	}
+}
+
