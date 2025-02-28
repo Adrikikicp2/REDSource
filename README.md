@@ -6,7 +6,7 @@
 To build this massive project you need:
 - Visual Studio 2022
 - C++ MFC for Visual C++ v14.3 (143) tools.
-- [Windows 11 SDK (10.0.26100)]https://developer.microsoft.com/en-us/windows/downloads/windows-sdk/)
+- [Windows 11 SDK 10.0.26100.0]https://developer.microsoft.com/en-us/windows/downloads/windows-sdk/)
 - Latest Python version for compiling VScript.
 
 Create the project using `createallprojects.bat`. If you want to add map compile tools, create them using `createcompiletools.bat`
