@@ -526,6 +526,12 @@ $Project
 			$File	"$SRCDIR\game\shared\sixense\sixense_convars.cpp"
 			$File	"$SRCDIR\game\shared\sixense\sixense_convars_extern.h"
 		}
+
+		$Folder "REDSource Specific"
+	{
+		$File "redsource/c_env_cascade_light.cpp"
+		$File "redsource/c_env_cascade_light.h"
+	}
 		
 		// Files not using precompiled header cbase.h
 

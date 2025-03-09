@@ -146,4 +146,9 @@ void CSkyCamera::Activate( )
 		}
 	}
 #endif
+// matches the behavior of fog controller
+	if ( GameRules()->IsOfficialMap() )
+	{
+		m_skyboxData.fog.radial = true;
+	}
 }
